@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "execall": "^2.0.0",
+    "front-matter": "^3.0.2",
+    "graceful-fs": "^4.2.2",
+    "marked": "^0.7.0"
+  }
+}

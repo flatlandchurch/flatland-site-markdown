@@ -1,0 +1,5 @@
+/node_modules
+yarn-error.log*
+
+# not to be confused with any unit-test files in src/
+test.js
