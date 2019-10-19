@@ -1,6 +1,7 @@
 ---
 title: Visit
 description: At Flatland Church we want you to get lit daily
+type: page
 ---
 
 ## What to Expect
@@ -18,3 +19,5 @@ We get it, church can be scary, especially when you don’t know what you might 
 Wear what makes you comfortable. Most folks come in jeans and button-down shirts. Even our pastors teach in jeans most weeks.
 
 <Form id="visit" />
+
+<Link src="test.md" exerpt="Meet the team that leads and disciples at Flatland Church." />

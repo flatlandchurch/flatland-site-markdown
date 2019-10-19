@@ -1,9 +1,25 @@
 {
   "dependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "@mdx-js/mdx": "^1.5.1",
+    "@mdx-js/react": "^1.5.1",
+    "deepmerge": "^4.0.0",
+    "dot-prop": "^5.1.0",
     "execall": "^2.0.0",
     "front-matter": "^3.0.2",
+    "globby": "^10.0.1",
     "graceful-fs": "^4.2.2",
+    "html-attribute-parser": "^1.0.0",
+    "load-json-file": "^6.2.0",
     "marked": "^0.7.0",
-    "multimatch": "^4.0.0"
+    "multimatch": "^4.0.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "temp-write": "^4.0.0"
+  },
+  "scripts": {
+    "build": "node ./src/build.js"
   }
 }

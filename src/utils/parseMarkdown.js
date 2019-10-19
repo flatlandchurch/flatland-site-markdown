@@ -4,8 +4,9 @@ const fs = require('graceful-fs');
 const { promisify } = require('util');
 const fm = require('front-matter');
 const execall = require('execall');
+const parseHTML = require('html-attribute-parser');
 
-const componentRegexp = /<(.*)\/>/g;
+const componentRegexp = /(<(.*)\/>)/g;
 
 marked.setOptions({
   gfm: true,
@@ -15,19 +16,10 @@ marked.setOptions({
 });
 
 const parseComponent = (str) => {
-  const regexp = /(^")|("$)/g;
-
-  const componentStr = str.trim();
-  const [name, ...attrs] = componentStr.split(' ');
-
-  const attributes = attrs.reduce((acc, attr) => {
-    const [k, v] = attr.split('=');
-    acc[k] = v.replace(regexp, '');
-    return acc;
-  }, {});
+  const { tagName, attributes } = parseHTML(str.trim());
   return {
     type: 'component',
-    name,
+    name: tagName,
     attributes,
   };
 };
@@ -41,12 +33,6 @@ const parseComponent = (str) => {
  * parseMarkdown is intended to be used by a renderer
  * to place a document's contents/components into a
  * template.
- *
- * @param filepath
- * @returns {Promise<{
- *  meta: {},
- *  body: [string | {}]
- * }>}
  */
 module.exports = async (filepath) => {
   const file = await promisify(fs.readFile)(filepath, 'utf-8');
