@@ -1,1 +1,7 @@
-{}
+{
+	"content/visit.md": {
+		"title": "Visit",
+		"description": "At Flatland Church we want you to get lit daily",
+		"type": "page"
+	}
+}

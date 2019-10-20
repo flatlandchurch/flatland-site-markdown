@@ -5,6 +5,7 @@ const { promisify } = require('util');
 const fm = require('front-matter');
 const execall = require('execall');
 const parseHTML = require('html-attribute-parser');
+const catchify = require('catchify');
 
 const componentRegexp = /(<(.*)\/>)/g;
 
@@ -35,7 +36,12 @@ const parseComponent = (str) => {
  * template.
  */
 module.exports = async (filepath) => {
-  const file = await promisify(fs.readFile)(filepath, 'utf-8');
+  const [err, file] = await catchify(promisify(fs.readFile)(filepath, 'utf-8'));
+
+  if (err) {
+    return 'DELETED';
+  }
+
   const { attributes, body } = fm(file);
   const components = execall(componentRegexp, body);
 

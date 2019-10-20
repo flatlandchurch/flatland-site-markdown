@@ -20,4 +20,4 @@ Wear what makes you comfortable. Most folks come in jeans and button-down shirts
 
 <Form id="visit" />
 
-<Link src="test.md" exerpt="Meet the team that leads and disciples at Flatland Church." />
+<Link src="test.md" excerpt="Meet the team that leads and disciples at Flatland Church." />

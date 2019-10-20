@@ -1,8 +1,10 @@
 {
   "version": "4.0.0-beta.1",
   "dependencies": {
+    "catchify": "^2.6.1",
     "deepmerge": "^4.0.0",
     "dot-prop": "^5.1.0",
+    "ejs": "^2.7.1",
     "execall": "^2.0.0",
     "front-matter": "^3.0.2",
     "globby": "^10.0.1",
@@ -11,7 +13,8 @@
     "load-json-file": "^6.2.0",
     "marked": "^0.7.0",
     "multimatch": "^4.0.0",
-    "temp-write": "^4.0.0"
+    "temp-write": "^4.0.0",
+    "write-json-file": "^4.2.0"
   },
   "scripts": {
     "build": "node ./src/build.js"
