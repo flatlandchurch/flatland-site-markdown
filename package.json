@@ -1,6 +1,7 @@
 {
   "version": "4.0.0-beta.1",
   "dependencies": {
+    "callsite": "^1.0.0",
     "catchify": "^2.6.1",
     "deepmerge": "^4.0.0",
     "dot-prop": "^5.1.0",

@@ -7,6 +7,7 @@ const revList = require('./utils/revList');
 const getDiffs = require('./utils/getDiffs');
 const getDependencyTree = require('./utils/getDependencyTree');
 const parseMarkdown = require('./utils/parseMarkdown');
+const components = require('./components');
 
 const [buildLocation, sha] = process.argv.slice(2);
 
@@ -21,7 +22,7 @@ const [buildLocation, sha] = process.argv.slice(2);
 
   const contents = (await Promise.all(files
     .map(async (f) => {
-      const content = await parseMarkdown(path.join(__dirname, '../content', f));
+      const content = await parseMarkdown(path.join(__dirname, '../', f));
 
       if (typeof content !== 'object' && content === 'DELETED') return;
 
@@ -36,6 +37,16 @@ const [buildLocation, sha] = process.argv.slice(2);
     .filter((t) => t);
 
   await write(META_TREE_PATH, metaTree);
+  const renderedContents = await Promise.all(contents
+    .map((c) => Promise.all(c.body.map((b) => {
+        if (typeof b !== 'object') return b;
+
+        if (!components.hasOwnProperty(b.name)) return null;
+
+        return components[b.name](metaTree, b.attributes);
+      }))));
+
+  console.log(renderedContents);
 
   // Body will change over time, meta should remain unchanged
   // Body should end as a string

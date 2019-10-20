@@ -112,6 +112,11 @@ braces@^3.0.1:
   dependencies:
     fill-range "^7.0.1"
 
+callsite@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/callsite/-/callsite-1.0.0.tgz#280398e5d664bd74038b6f0905153e6e8af1bc20"
+  integrity sha1-KAOY5dZkvXQDi28JBRU+borxvCA=
+
 catchify@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/catchify/-/catchify-2.6.1.tgz#c5eae8ccab3658a6c0a7fd757293bf88f21fb8c5"
