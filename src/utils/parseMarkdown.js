@@ -1,29 +1,10 @@
 'use strict';
-const marked = require('marked');
 const fs = require('graceful-fs');
 const { promisify } = require('util');
 const fm = require('front-matter');
-const execall = require('execall');
 const parseHTML = require('html-attribute-parser');
 const catchify = require('catchify');
-
-const componentRegexp = /(<(.*)\/>)/g;
-
-marked.setOptions({
-  gfm: true,
-  breaks: true,
-  smartLists: true,
-  smartypants: true,
-});
-
-const parseComponent = (str) => {
-  const { tagName, attributes } = parseHTML(str.trim());
-  return {
-    type: 'component',
-    name: tagName,
-    attributes,
-  };
-};
+const markdown = require('remark-parse');
 
 /**
  * parseMarkdown takes a document filepath and returns
@@ -43,24 +24,38 @@ module.exports = async (filepath) => {
   }
 
   const { attributes, body } = fm(file);
-  const components = execall(componentRegexp, body);
+  const parser = new markdown.Parser(null, body);
+  const document = parser.parse();
 
-  const data = {
+  document.children = document.children.reduce((acc, child) => {
+    if (child.type === 'code') {
+      if (child.lang !== 'json') {
+        return acc;
+      }
+
+      acc.push({
+        type: 'ld+json',
+        value: JSON.parse(child.value),
+      });
+      return acc;
+    }
+
+    if (child.type === 'html') {
+      const { tagName, attributes } = parseHTML(child.value.trim());
+      acc.push({
+        type: 'component',
+        name: tagName,
+        attributes,
+      });
+      return acc;
+    }
+
+    acc.push(child);
+    return acc;
+  }, []);
+
+  return {
     meta: attributes,
+    body: document,
   };
-
-  if (!components.length) {
-    data.body = [marked(body)];
-  } else {
-    data.body = [];
-    let lastIndex = 0;
-    components.forEach((component) => {
-      const md = body.substring(lastIndex, component.index);
-      data.body.push(marked(md));
-      data.body.push(parseComponent(component.subMatches[0]));
-      lastIndex = component.index + component.match.length;
-    });
-  }
-
-  return data;
 };

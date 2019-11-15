@@ -1,5 +1,6 @@
 'use strict';
 const ejs = require('ejs');
+const cx = require('classnames');
 
 const _import = require('../../utils/import');
 
@@ -11,8 +12,16 @@ const Link = async (metaTree, props) => {
 
   if (!metaTree.hasOwnProperty(key)) return null;
 
+  const url = `/${props.src.replace(/\.md/, '')}`;
+
+  const buttonClass = cx('fc-button', {
+    [`fc-button--${props.color}`]: !!props.color,
+  });
+
   return ejs.render(template, {
     link: metaTree[key],
+    url,
+    buttonClass,
     excerpt: props.excerpt || metaTree[key].excerpt,
   });
 };

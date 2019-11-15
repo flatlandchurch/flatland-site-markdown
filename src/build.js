@@ -7,7 +7,8 @@ const revList = require('./utils/revList');
 const getDiffs = require('./utils/getDiffs');
 const getDependencyTree = require('./utils/getDependencyTree');
 const parseMarkdown = require('./utils/parseMarkdown');
-const components = require('./components');
+const saveFiles = require('./utils/saveFiles');
+const parseAST = require('./utils/parseAST');
 
 const [buildLocation, sha] = process.argv.slice(2);
 
@@ -28,27 +29,30 @@ const [buildLocation, sha] = process.argv.slice(2);
 
       metaTree[f] = content.meta;
 
-      // TODO: add meta to committed JSON tree
-      return ({
-        meta: content.meta,
-        body: content.body,
-      });
-    })))
-    .filter((t) => t);
+      return content;
+    })));
 
   await write(META_TREE_PATH, metaTree);
-  const renderedContents = await Promise.all(contents
-    .map((c) => Promise.all(c.body.map((b) => {
-        if (typeof b !== 'object') return b;
 
-        if (!components.hasOwnProperty(b.name)) return null;
+  async function asyncReducer(arr, cb, initialValue) {
+    if (!arr.length) {
+      return initialValue;
+    } else {
+      const [first, ...rest] = arr;
+      const acc = await cb(initialValue, first);
+      return asyncReducer(rest, cb, acc);
+    }
+  }
 
-        return components[b.name](metaTree, b.attributes);
-      }))));
+  const renderedContents = await Promise.all(contents.map(c => asyncReducer(c.body.children, parseAST(metaTree), '')));
 
-  console.log(renderedContents);
+  // All work to actual files should be done by this point
+  await saveFiles(buildLocation, renderedContents, files);
 
-  // Body will change over time, meta should remain unchanged
-  // Body should end as a string
-  // Meta should be only what is needed to render/link pages
+  // render needed changes to indexes
+  // - Series
+  // - Sermons
+  // - Events
+  // - Blog
+  // - Classes
 })();

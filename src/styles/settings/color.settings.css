@@ -1,0 +1,31 @@
+body {
+    --orange__lightest: #FE9774;
+    --orange__light: #FE7A4D;
+    --orange__base: #E75523;
+    --orange__dark: #8B3315;
+
+    --red__lightest: #F2958F;
+    --red__light: #ED6B63;
+    --red__base: #E3170A;
+    --red__dark: #7C0D06;
+
+    --neutral__lightest: #FFFFFF;
+    --neutral__light: #F4F5F7;
+    --neutral__base: #5E6C84;
+    --neutral__dark: #091E42;
+
+    --purple__lightest: #D8C1F4;
+    --purple__light: #B283E9;
+    --purple__base: #731DD8;
+    --purple__dark: #350E63;
+
+    --blue__lightest: #F7F9FD;
+    --blue__light: #DDEBF7;
+    --blue__base: #1070CA;
+    --blue__dark: #084B8A;
+
+    --green__lightest: #C8D8B7;
+    --green__light: #92B26F;
+    --green__base: #6A9639;
+    --green__dark: #29441A;
+}

@@ -1,0 +1,104 @@
+.fc-button {
+    display: block;
+    padding: 16px 32px;
+    color: #fff;
+    border: 2px solid transparent;
+    background: var(--neutral__base);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    user-select: none;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: max-content;
+}
+
+.fc-button.fc-button--block {
+    width: 100%;
+}
+
+.fc-button:focus,
+.fc-button:hover {
+    background: var(--neutral__dark);
+}
+
+.fc-button--red {
+    background: var(--red__base);
+}
+
+.fc-button--red:focus,
+.fc-button--red:hover {
+    background: var(--red__dark);
+}
+
+.fc-button__ghost--red {
+    border-color: var(--red__base);
+    background: transparent;
+    color: var(--red__base);
+}
+
+.fc-button--purple {
+    background: var(--purple__base);
+}
+
+.fc-button--purple:focus,
+.fc-button--purple:hover {
+    background: var(--purple__dark);
+}
+
+.fc-button__ghost--purple {
+    border-color: var(--purple__base);
+    background: transparent;
+    color: var(--purple__base);
+}
+
+.fc-button--blue {
+    background: var(--blue__base);
+}
+
+.fc-button--blue:focus,
+.fc-button--blue:hover {
+    background: var(--blue__dark);
+}
+
+.fc-button__ghost--blue {
+    border-color: var(--blue__base);
+    background: transparent;
+    color: var(--blue__base);
+}
+
+.fc-button--green {
+    background: var(--green__base);
+}
+
+.fc-button--green:focus,
+.fc-button--green:hover {
+    background: var(--green__dark);
+}
+
+.fc-button__ghost--green {
+    border-color: var(--green__base);
+    background: transparent;
+    color: var(--green__base);
+}
+
+.fc-button--orange {
+    background: var(--orange__base);
+}
+
+.fc-button--orange:focus,
+.fc-button--orange:hover {
+    background: var(--orange__dark);
+}
+
+.fc-button__ghost--orange {
+    border-color: var(--orange__base);
+    background: transparent;
+    color: var(--orange__base);
+}
