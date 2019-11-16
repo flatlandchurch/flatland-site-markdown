@@ -8,6 +8,6 @@ description: >-
 
   Our world is full of people bent on building their own kingdoms. True life is
   found when we relinquish our selfish ambitions and invite God to establish His
-  heavenly kingdom here below
+  heavenly kingdom here below.
 ---
 
