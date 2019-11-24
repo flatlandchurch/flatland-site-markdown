@@ -1,20 +1,4 @@
 {
-	"content/visit.md": {
-		"title": "Visit",
-		"description": "At Flatland Church we want you to get lit daily",
-		"type": "page",
-		"location": {
-			"id": 144,
-			"image": "https://firebasestorage.googleapis.com/v0/b/flatland-api.appspot.com/o/IMG_1305.JPG?alt=media&token=c3bf8aaf-535b-4b68-83f7-70da6b8ea8ce",
-			"address": "4801 N 144th Street",
-			"city": "Omaha",
-			"state": "NE",
-			"zip": 68116
-		}
-	},
-	"content/test.md": {
-		"title": "This is a story"
-	},
 	"content/locations/144.md": {
 		"title": "144",
 		"address": {
