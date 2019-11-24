@@ -8,11 +8,12 @@ const prettify = (source) => prettier.format(source, { parser: 'html' });
 
 const regexpr = /content\/(.*)\.md/g;
 
-module.exports = (dest, rendered, paths) => Promise.all(rendered.map(async (r, idx) => {
+// TODO: this needs to be better parsed through
+module.exports = (dest, rendered, changes) => Promise.all(rendered.map(async (r, idx) => {
   if (!r) return;
 
   const titleRegex = new RegExp(regexpr);
-  const [, file] = titleRegex.exec(paths[idx]);
+  const [, file] = titleRegex.exec(changes[idx].path);
   const filename = `${file}.html`;
 
   await promisify(fs.writeFile)(path.join(dest, filename), prettify(r));

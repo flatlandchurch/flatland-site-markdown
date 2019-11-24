@@ -19,18 +19,19 @@ const [buildLocation, sha] = process.argv.slice(2);
   const commits = await revList(pkg.lastSha);
   const files = await getDiffs(commits);
 
-  // console.log(files);
+  const deletedFiles = files.filter(({ action }) => action === 'deleted');
+  const modifiedFiles = files.filter(({ action }) => action !== 'deleted');
 
-  const contents = (await Promise.all(files
+  const contents = (await Promise.all(modifiedFiles
     .map(async (f) => {
-      const content = await parseMarkdown(path.join(__dirname, '../', f));
-
-      if (typeof content !== 'object' && content === 'DELETED') return;
-
-      metaTree[f] = content.meta;
-
+      const content = await parseMarkdown(path.join(__dirname, '../', f.path));
+      metaTree[f.path] = content.meta;
       return content;
     })));
+
+  deletedFiles.forEach((f) => {
+    delete metaTree[f.path];
+  });
 
   await write(META_TREE_PATH, metaTree);
 
@@ -45,9 +46,10 @@ const [buildLocation, sha] = process.argv.slice(2);
   }
 
   const renderedContents = await Promise.all(contents.map(c => asyncReducer(c.body.children, parseAST(metaTree), '')));
+  console.log(renderedContents);
 
   // All work to actual files should be done by this point
-  await saveFiles(buildLocation, renderedContents, files);
+  await saveFiles(buildLocation, renderedContents, modifiedFiles);
 
   // render needed changes to indexes
   // - Series
