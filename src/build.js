@@ -3,9 +3,9 @@ const write = require('write-json-file');
 const read = require('load-json-file');
 const path = require('path');
 
+const pkg = require('../package');
 const revList = require('./utils/revList');
 const getDiffs = require('./utils/getDiffs');
-const getDependencyTree = require('./utils/getDependencyTree');
 const parseMarkdown = require('./utils/parseMarkdown');
 const saveFiles = require('./utils/saveFiles');
 const parseAST = require('./utils/parseAST');
@@ -14,12 +14,12 @@ const [buildLocation, sha] = process.argv.slice(2);
 
 (async () => {
   const META_TREE_PATH = path.join(__dirname, '../', '.meta_tree.json');
-  // TODO: Change this to be a file with just last_sha
-  const { _last_sha } = await getDependencyTree();
   const metaTree = await read(META_TREE_PATH);
 
-  const commits = await revList(_last_sha);
+  const commits = await revList(pkg.lastSha);
   const files = await getDiffs(commits);
+
+  // console.log(files);
 
   const contents = (await Promise.all(files
     .map(async (f) => {
