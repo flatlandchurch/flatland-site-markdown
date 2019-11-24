@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title><%= helmet.title %></title>
+        <script src="https://unpkg.com/static-navigator"></script>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
+        <meta name="theme-color" content="#000000">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="Flatland Church">
+        <meta property="fb:app_id" content="1007632336053609">
+        <meta name="twitter:site" content="@flatlandchurch">
+        <meta property="place:location:latitude" content="41.3039152">
+        <meta property="place:location:longitude" content="-96.1377482">
+        <link rel="apple-touch-icon" href="https://firebasestorage.googleapis.com/v0/b/flatland-api.appspot.com/o/icons%2Ficon-96x96.png?alt=media&amp;token=0465654f-8340-4f63-b258-57d4c32400f8">
+        <link rel="apple-touch-icon" sizes="152x152" href="https://firebasestorage.googleapis.com/v0/b/flatland-api.appspot.com/o/icons%2Ficon-152x152.png?alt=media&amp;token=f1dbc73a-9804-4617-8f5a-60bcb440d37b">
+        <link rel="apple-touch-icon" sizes="180x180" href="https://firebasestorage.googleapis.com/v0/b/flatland-api.appspot.com/o/icons%2Ficon-167x167.png?alt=media&amp;token=81113e67-3e07-42ff-8f02-17f5e3aee3b6">
+        <link rel="apple-touch-icon" sizes="167x167" href="https://firebasestorage.googleapis.com/v0/b/flatland-api.appspot.com/o/icons%2Ficon-180x180.png?alt=media&amp;token=62c6340a-ce77-40a1-bcd7-2a39afff82e3">
+    </head>
+    <body>
+        <div id="wrapper">
+            <header>
+                <a href="/">Logo</a>
+                <nav>
+                    <a href="/give">Give</a>
+                    <a href="/today">Today</a>
+                </nav>
+                <button>Menu</button>
+                <!-- Figure this out -->
+            </header>
+            <div id="slot">
+                <%- body %>
+            </div>
+            <footer>
+                <!-- TODO: this -->
+                <div class="footer-contact">
+                    <h2>Contact Us</h2>
+                    <address class="footer-address">
+                        <a href="tel:+14024929111">(402) 492-9111</a>
+                        <a href="mailto:info@flatlandchurch.com?subject=Hello">hello@flatlandchurch.com</a>
+                        <div class="footer-address-social">
+                            <!-- TODO: add these -->
+                        </div>
+                    </address>
+                </div>
+                <div class="footer-locations">
+                    <div class="footer-location">
+                        <h2><a href="/locations/144">Flatland 144</a></h2>
+                        <p>Sunday &mdash; 9:30am</p>
+                        <p>Sunday &mdash; 11:00am</p>
+                    </div>
+                    <div class="footer-location">
+                        <h2><a href="/locations/174">Flatland 174</a></h2>
+                        <p>Sunday &mdash; 11:00am</p>
+                    </div>
+                </div>
+                <div class="footer-legal">
+                    <div class="footer-legal-nav">
+                        <nav>
+                            <a href="/contact">Contact</a>
+                            <a href="/privacy">Privacy Policy</a>
+                            <a href="/cookies">Cookies</a>
+                        </nav>
+                    </div>
+                    <div class="footer-legal-info">
+                        <span>&copy; Flatland Group <%= new Date().getFullYear() %></span>
+                        <span>|</span>
+                        <span>All Rights Reserved</span>
+                        <span>|</span>
+                        <span><a href="/licenses#software">Software Licenses</a></span>
+                        <span>|</span>
+                        <span>Registered Non-Profit 501(c)3 (EIN: 00-4277592)</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script>
+            staticNavigator();
+        </script>
+    </body>
+</html>
