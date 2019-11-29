@@ -1,5 +1,5 @@
 <div class="half-jumbo">
-    <h1><%= meta.name %></h1>
+    <h1 class="light"><%= meta.name %></h1>
 </div>
 <section class="info-bar">
     <div class="info-content">
@@ -18,3 +18,17 @@
 <section>
     <!-- TODO: add in blog posts from person -->
 </section>
+<script>
+    // TODO: bundle this code
+  observer = new IntersectionObserver((entries, o) => {
+    entries.forEach((e) => {
+      if (e.intersectionRatio <= 0.1 && !document.querySelector('header').className.includes('white')) {
+        document.querySelector('header').className = 'white';
+      } else {
+        document.querySelector('header').className = '';
+      }
+    })
+  }, {threshold: 0, rootMargin: '-120px'});
+
+  observer.observe(document.querySelector('.half-jumbo'))
+</script>

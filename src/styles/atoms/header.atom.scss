@@ -1,0 +1,99 @@
+@mixin nav_item($light: true) {
+  @if $light {
+    color: var(--neutral__200);
+  } @else {
+    color: var(--neutral__600);
+  }
+  font-weight: var(--weight__bold);
+  font-size: calc(var(--base) * 4);
+  background: transparent;
+  box-sizing: border-box;
+  padding: var(--base);
+  border: 0;
+  border-radius: 4px;
+
+  &:focus {
+    @if $light {
+      background: var(--neutral__500);
+    } @else {
+      background: var(--neutral__200);
+    }
+    outline: none;
+  }
+}
+
+header {
+  width: 100%;
+  background: transparent;
+  display: block;
+  padding: 12px 0;
+  box-sizing: border-box;
+  z-index: 10; /* TODO: make this a variable */
+  position: fixed;
+  transition: background-color 0.25s ease-out;
+
+  .header-content {
+    width: 90%;
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: minmax(0, 200px) minmax(0, max-content);
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (max-width: 767px) {
+      grid-template-columns: minmax(0, 32px) minmax(0, max-content);
+    }
+  }
+
+  nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, max-content));
+    grid-gap: 12px;
+  }
+
+  nav a {
+    @include nav_item;
+    text-decoration: none;
+  }
+
+  nav button {
+    @include nav_item;
+    -webkit-appearance: none;
+  }
+
+  &.white {
+    background: var(--neutral__050);
+    transition: color 0.2s ease-in-out, background-color 0.25s ease-in;
+    box-shadow: 0 4px 15px 0 rgba(0,0,0,0.1);
+
+    nav a {
+      @include nav_item(false);
+    }
+
+    nav button {
+      @include nav_item(false);
+    }
+  }
+
+  svg {
+    width: 100%;
+  }
+}
+
+svg#logo-desktop {
+  display: block;
+}
+
+svg#logo-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  svg#logo-desktop {
+    display: none;
+  }
+
+  svg#logo-mobile {
+    display: block;
+  }
+}

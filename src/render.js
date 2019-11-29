@@ -24,7 +24,7 @@ module.exports = (metaTree) => async (content) => {
   });
 
   content.rendered = ejs.render(await getTemplate('root'), {
-    wrappedBody,
+    body: wrappedBody,
     helmet: {
       title: 'getTitle() | Flatland Church'
     },

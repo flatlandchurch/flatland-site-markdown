@@ -1,0 +1,13 @@
+@mixin jumbotron {
+  display: grid;
+  align-items: end;
+  box-sizing: border-box;
+  padding: calc(var(--base) * 6);
+}
+
+.half-jumbo {
+  @include jumbotron();
+  width: 100%;
+  background: var(--neutral__700);
+  height: 50vh;
+}

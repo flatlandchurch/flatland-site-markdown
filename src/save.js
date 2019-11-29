@@ -6,7 +6,7 @@ const prettier = require('prettier');
 const mkdir = require('make-dir');
 const rimraf = require('rimraf');
 
-const prettify = (source) => prettier.format(source, { parser: 'html' });
+const prettify = (source) => prettier.format(source, { parser: 'html', htmlWhitespaceSensitivity: 'strict' });
 
 const getFilePath = ({ type, path }) => {
   const regexpr = /content\/.*\/(.*)\.md/g;
@@ -19,7 +19,9 @@ const getFilePath = ({ type, path }) => {
 
 module.exports = (destDir) => async (changes) => {
   if (changes.action === 'deleted') {
-    rimraf(path.join(destDir, getFilePath(changes)));
+    try {
+      await promisify(rimraf)(path.join(destDir, getFilePath(changes)));
+    } catch (e) {}
     return;
   }
 

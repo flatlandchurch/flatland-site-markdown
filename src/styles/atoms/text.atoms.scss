@@ -1,0 +1,54 @@
+@mixin headings {
+  font-weight: var(--weight__bold);
+  color: var(--neutral__600);
+
+  &.light {
+    color: var(--neutral__100);
+  }
+}
+
+h1 {
+  @include headings();
+  font-size: var(--h1);
+}
+
+h2 {
+  @include headings();
+  font-size: var(--h2);
+}
+
+h3 {
+  @include headings();
+  font-size: var(--h3);
+}
+
+h4 {
+  @include headings();
+  font-size: var(--h4);
+}
+
+h5 {
+  @include headings();
+  font-size: var(--h5);
+}
+
+h6 {
+  @include headings();
+  font-size: var(--h5);
+}
+
+p, span {
+  font-weight: var(--weight__light);
+  line-height: 1.9;
+  color: var(--neutral__600);
+  font-size: var(--text);
+  margin: calc(var(--base) * 6) 0;
+
+  &.light {
+    color: var(--neutral__200);
+  }
+}
+
+strong {
+  font-weight: var(--weight__bold);
+}
