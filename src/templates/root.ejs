@@ -17,8 +17,9 @@
         <link rel="apple-touch-icon" sizes="180x180" href="https://firebasestorage.googleapis.com/v0/b/flatland-api.appspot.com/o/icons%2Ficon-167x167.png?alt=media&amp;token=81113e67-3e07-42ff-8f02-17f5e3aee3b6">
         <link rel="apple-touch-icon" sizes="167x167" href="https://firebasestorage.googleapis.com/v0/b/flatland-api.appspot.com/o/icons%2Ficon-180x180.png?alt=media&amp;token=62c6340a-ce77-40a1-bcd7-2a39afff82e3">
         <!-- TODO: Complete the CSP -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.flatlandchurch.com *.planningcenteronline.com 'unsafe-inline'" />
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.flatlandchurch.com *.planningcenteronline.com *.churchcenter.com 'unsafe-inline'" />
         <link rel="stylesheet" href="/style.css">
+        <script src="https://js.churchcenter.com/modal/v1"></script>
         <style>
             * {
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -62,9 +63,12 @@
                         </svg>
                     </a>
                     <nav>
-                        <a href="/give">Give</a>
+                        <a href="https://flatland.churchcenteronline.com/giving?open-in-church-center-modal=true">Give</a>
                         <a href="/today">Today</a>
-                        <button>Menu</button>
+                        <button>
+                            <span class="hamburger"></span>
+                            Menu
+                        </button>
                     </nav>
                     <!-- Figure this out -->
                 </div>
@@ -73,44 +77,46 @@
                 <%- body %>
             </div>
             <footer>
-                <!-- TODO: this -->
-                <div class="footer-contact">
-                    <h2>Contact Us</h2>
-                    <address class="footer-address">
-                        <a href="tel:+14024929111">(402) 492-9111</a>
-                        <a href="mailto:info@flatlandchurch.com?subject=Hello">hello@flatlandchurch.com</a>
-                        <div class="footer-address-social">
-                            <!-- TODO: add these -->
+                <div class="footer-content">
+                    <!-- TODO: this -->
+                    <div class="footer-contact">
+                        <h2 class="light">Contact Us</h2>
+                        <address class="footer-address">
+                            <a href="tel:+14024929111">(402) 492-9111</a>
+                            <a href="mailto:info@flatlandchurch.com?subject=Hello">hello@flatlandchurch.com</a>
+                            <div class="footer-address-social">
+                                <!-- TODO: add these -->
+                            </div>
+                        </address>
+                    </div>
+                    <div class="footer-locations">
+                        <div class="footer-location">
+                            <h2 class="light"><a href="/locations/144">Flatland 144</a></h2>
+                            <p>Sunday &mdash; 9:30am</p>
+                            <p>Sunday &mdash; 11:00am</p>
                         </div>
-                    </address>
-                </div>
-                <div class="footer-locations">
-                    <div class="footer-location">
-                        <h2><a href="/locations/144">Flatland 144</a></h2>
-                        <p>Sunday &mdash; 9:30am</p>
-                        <p>Sunday &mdash; 11:00am</p>
+                        <div class="footer-location">
+                            <h2 class="light"><a href="/locations/174">Flatland 174</a></h2>
+                            <p>Sunday &mdash; 11:00am</p>
+                        </div>
                     </div>
-                    <div class="footer-location">
-                        <h2><a href="/locations/174">Flatland 174</a></h2>
-                        <p>Sunday &mdash; 11:00am</p>
-                    </div>
-                </div>
-                <div class="footer-legal">
-                    <div class="footer-legal-nav">
-                        <nav>
-                            <a href="/contact">Contact</a>
-                            <a href="/privacy">Privacy Policy</a>
-                            <a href="/cookies">Cookies</a>
-                        </nav>
-                    </div>
-                    <div class="footer-legal-info">
-                        <span>&copy; Flatland Group <%= new Date().getFullYear() %></span>
-                        <span>|</span>
-                        <span>All Rights Reserved</span>
-                        <span>|</span>
-                        <span><a href="/licenses#software">Software Licenses</a></span>
-                        <span>|</span>
-                        <span>Registered Non-Profit 501(c)3 (EIN: 00-4277592)</span>
+                    <div class="footer-legal">
+                        <div class="footer-legal-nav">
+                            <nav>
+                                <a href="/contact">Contact</a>
+                                <a href="/privacy">Privacy Policy</a>
+                                <a href="/cookies">Cookies</a>
+                            </nav>
+                        </div>
+                        <div class="footer-legal-info">
+                            <span>&copy; Flatland Group <%= new Date().getFullYear() %></span>
+                            <span>|</span>
+                            <span>All Rights Reserved</span>
+                            <span>|</span>
+                            <span><a href="/licenses#software">Software Licenses</a></span>
+                            <span>|</span>
+                            <span>Registered Non-Profit 501(c)3 (EIN: 00-4277592)</span>
+                        </div>
                     </div>
                 </div>
             </footer>

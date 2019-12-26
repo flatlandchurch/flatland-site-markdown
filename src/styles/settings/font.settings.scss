@@ -2,21 +2,21 @@
   --base: 4px;
 
   --h1: calc(var(--base) * 16);
-  --h2: calc(var(--base) * 12);
-  --h3: calc(var(--base) * 10);
-  --h4: calc(var(--base) * 8);
-  --h5: calc(var(--base) * 6);
+  --h2: calc(var(--base) * 8);
+  --h3: calc(var(--base) * 7);
+  --h4: calc(var(--base) * 6);
+  --h5: calc(var(--base) * 5);
   --h6: calc(var(--base) * 4);
   --text: calc(var(--base) * 5.25);
   --link: calc(var(--base) * 5.25);
 
   @media screen and (max-width: 767px) {
     --h1: calc(var(--base) * 10);
-    --h2: calc(var(--base) * 8);
-    --h3: calc(var(--base) * 7);
-    --h4: calc(var(--base) * 6);
-    --h5: calc(var(--base) * 5);
-    --h6: calc(var(--base) * 4);
+    --h2: calc(var(--base) * 6);
+    --h3: calc(var(--base) * 5);
+    --h4: calc(var(--base) * 4);
+    --h5: calc(var(--base) * 3);
+    --h6: calc(var(--base) * 2);
     --text: calc(var(--base) * 4.5);
     --link: calc(var(--base) * 4.5);
   }
@@ -25,4 +25,12 @@
   --weight__bold: 600;
   --weight__medium: 400;
   --weight__light: 300;
+}
+
+@mixin link_focus($color) {
+  &:focus,
+  &:hover {
+    background: $color;
+    outline: none;
+  }
 }

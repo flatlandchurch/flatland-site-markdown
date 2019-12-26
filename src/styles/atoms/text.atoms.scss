@@ -1,5 +1,5 @@
 @mixin headings {
-  font-weight: var(--weight__bold);
+  font-weight: var(--weight__black);
   color: var(--neutral__600);
 
   &.light {
@@ -47,6 +47,10 @@ p, span {
   &.light {
     color: var(--neutral__200);
   }
+}
+
+a {
+  color: var(--blue__300);
 }
 
 strong {
