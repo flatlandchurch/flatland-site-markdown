@@ -6,7 +6,7 @@
     "catchify": "^2.6.1",
     "classnames": "^2.2.6",
     "deepmerge": "^4.0.0",
-    "dot-prop": "^5.1.0",
+    "dot-prop": "^5.1.1",
     "ejs": "^2.7.1",
     "execall": "^2.0.0",
     "front-matter": "^3.0.2",
